@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,12 +16,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('user.home');
+})->name('user.home');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/user/profile', function () {
+    return view('user.profile');
+})->middleware(['auth', 'verified'])->name('profile');
+
+Route::prefix('admin')->group(function () {
+    
+    Route::get('dashboard', [AdminDashboardController::class, 'dashboard'])->name('admin.index');
+    Route::get('hardware', [AdminDashboardController::class, 'hardware'])->name('admin.hardware');
+    Route::get('software', [AdminDashboardController::class, 'software'])->name('admin.software');
+    Route::get('pcbuild', [AdminDashboardController::class, 'pcbuild'])->name('admin.pcbuild');
+    
+})->middleware(['auth', 'admin.auth']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

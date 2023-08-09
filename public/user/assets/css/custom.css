@@ -1,0 +1,181 @@
+/* font-family: 'Barlow', sans-serif;
+font-family: 'Montserrat', sans-serif;
+font-family: 'Poppins', sans-serif;
+font-family: 'Ysabeau Infant', sans-serif; */
+#pseudo-bg{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 115, 0.26);
+    position: absolute;
+}
+
+.centering {
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* overflow: hidden; */
+}
+.centering h1 {
+    color: white;
+    font-family: 'Ysabeau Infant', sans-serif;
+    font-weight: 100 bold ;
+    text-shadow: 0px 0px 25px rgba(255, 255, 255, 1);
+
+
+    /* font-weight: 400; */
+    /* font-weight: 900; */
+}
+.high-centered-text {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* overflow: hidden; */
+}
+
+.high-centered-text h1 {
+    color: white;
+    font-size: 300px;
+    font-weight: 100;
+    text-shadow: 0 0px 1000px #fff;
+}
+
+.card-login {
+    border-radius: 20px;
+    padding-left: clamp(20px, 5vw, 60px);
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: clamp(20px, 5vw,60px);
+    background-color: rgba(0, 216, 254, 0.3);
+    margin: 0;
+    width: 100%;
+    /* grid-column: 1/2; */
+    backdrop-filter: blur(2px);
+    /* -webkit-filter: blur(50%); */
+    transition: 100ms ease-in-out;
+    box-shadow: 0px 0px 100px 1px #00000032;
+    /* box-shadow: 0px 0px 10000px 1000px #00146e37; */
+}
+
+.card-login a {
+    color: white;
+    /* font-weight: bold; */
+    font-size: 18px;
+    font-family: 'Ysabeau Infant', sans-serif;
+    font-weight: 400;
+    transition: 150ms ease-in-out;
+}
+.card-login a:hover {
+    /* color: white; */
+    font-weight: bold;
+}
+/* particlejs */
+/* ---- reset ---- */
+/* body {
+    margin: 0;
+    font: normal 75% Arial, Helvetica, sans-serif;
+} */
+canvas {
+    display: block;
+    vertical-align: bottom;
+} /* ---- particles.js container ---- */
+#particles-js {
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    background-image: url("../../../user/assets/img/laut.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+} /* ---- stats.js ---- */
+.count-particles {
+    background: #000022;
+    position: absolute;
+    top: 48px;
+    left: 0;
+    width: 80px;
+    color: #13e8e9;
+    font-size: 0.8em;
+    text-align: left;
+    text-indent: 4px;
+    line-height: 14px;
+    padding-bottom: 2px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+}
+.js-count-particles {
+    font-size: 1.1em;
+}
+#stats,
+.count-particles {
+    -webkit-user-select: none;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+#stats {
+    border-radius: 3px 3px 0 0;
+    overflow: hidden;
+}
+.count-particles {
+    border-radius: 0 0 3px 3px;
+}
+/* particlejs */
+
+.bg-image {
+    width: 100%;
+    height: 100vh;
+}
+#form-login input {
+    background-color: transparent;
+    border-color: transparent transparent rgb(255, 255, 255) transparent;
+    /* border-color: whites white rgb(255, 255, 255) white; */
+    margin-bottom: 30px;
+    height: 50px;
+    border-radius: 0px;
+    width: 300px;
+    color: white;
+    font-size: 18px;
+
+    font-family: 'Ysabeau Infant', sans-serif;
+    font-weight: 400;
+    border-width: 3px;
+    transition: 250ms ease-in-out;
+}
+#form-login input:focus {
+    outline: none;
+        border-color: transparent white rgb(255, 255, 255) transparent;
+
+    border-radius: 0px 0px 10px 0px;
+
+
+}
+#form-login input::placeholder {
+    color: white;
+    font-size: 18px;
+
+    font-family: 'Ysabeau Infant', sans-serif;
+    font-weight: 400;
+}
+.submit-button{
+    margin: auto;
+    width: 100px;
+    padding: 5px;
+    border-radius: 0 12px 0 12px;
+    border-color: transparent;
+    color: white;
+    font-size: 16px;
+
+    background-color: rgba(0, 0, 0, 0.184);
+    transition: 150ms ease-in-out;
+}
+.submit-button:hover{
+    width: 150px;
+    
+    border-color:  rgb(255, 255, 255) transparent transparent white;
+
+
+}

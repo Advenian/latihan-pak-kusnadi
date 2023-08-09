@@ -1,52 +1,52 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
+@extends('layouts.user')
+@section('content')
+    <div id="particles-js">
+        <div id="pseudo-bg"></div>
+        <div class="centering card-login-outer">
+            <h1>Register</h1>
+            <div class="card-login">
+                <form action="{{ route('register') }}" id="form-login" method="POST" class="d-flex flex-column mb-3">
+                    @csrf
+                    <input type="text" placeholder="Name" name="name">
+                    <input type="email" placeholder="Email" name="email">
+                    <input type="password" name="password" placeholder="Password">
+                    <input type="password" name="password_confirmation" placeholder="Confirm Password" required
+                        autocomplete="new-password">
+                    <button class="submit-button" type="submit">Sign Up</button>
+                </form>
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+
+                {{-- <div class="mb-2">
+                    @if (Route::has('password.request'))
+                        <a class=" underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            href="{{ route('password.request') }}">
+                            Forgot your password?
+                        </a>
+                    @endif
+                </div> --}}
+                <a href="{{ route('login') }}" class="text-center">Already registered?</a>
+
+            </div>
         </div>
+    </div>
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+    <!-- Vendor JS Files -->
+    <script src="{{ asset('/user/assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
+    <script src="{{ asset('/user/assets/vendor/aos/aos.js') }}"></script>
+    <script src="{{ asset('/user/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('/user/assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+    <script src="{{ asset('/user/assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ asset('/user/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('/user/assets/vendor/php-email-form/validate.js') }}"></script>
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+    <!-- Template Main JS File -->
+    <script src="{{ asset('/user/assets/js/main.js') }}"></script>
 
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ml-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+    {{-- Custom JS --}}
+    <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> <!-- stats.js lib -->
+    <script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
+    <script src="{{ asset('/user/assets/js/custom.js') }}"></script>
+@endsection
