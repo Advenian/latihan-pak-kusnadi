@@ -41,7 +41,7 @@
 
                 <li class="nav-item ">
                     <a href="{{ url('#') }}" class="nav-link active">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fas fa-clipboard-list"></i>
                         <p>
                             Appointments
                             <i class="right fas fa-angle-left"></i>
@@ -70,15 +70,15 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ url('#') }}" class="nav-link active">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fas fa-users"></i>
                         <p>
-                            User
+                            Client
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ url('./index3.html') }}" class="nav-link">
+                            <a href="{{ route('admin.client.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Accounts</p>
                             </a>
@@ -102,32 +102,29 @@
                                     <a href="{{ url('#') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>
-                                            Level 2
-                                            <i class="right fas fa-angle-left"></i>
+                                            About
+                                            
                                         </p>
                                     </a>
-                                    <ul class="nav nav-treeview">
-                                        <li class="nav-item">
-                                            <a href="{{ url('#') }}" class="nav-link">
-                                                <i class="far fa-dot-circle nav-icon"></i>
-                                                <p>Level 3</p>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="{{ url('#') }}" class="nav-link">
-                                                <i class="far fa-dot-circle nav-icon"></i>
-                                                <p>Level 3</p>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="{{ url('#') }}" class="nav-link">
-                                                <i class="far fa-dot-circle nav-icon"></i>
-                                                <p>Level 3</p>
-                                            </a>
-                                        </li>
-                                    </ul>
                                 </li>
                             </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url('#') }}" class="nav-link active">
+                        <i class="nav-icon fas fa-wrench"></i>
+                        <p>
+                            Fixer
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.fixer.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Accounts</p>
+                            </a>
                         </li>
                     </ul>
                 </li>

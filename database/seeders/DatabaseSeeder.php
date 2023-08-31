@@ -9,7 +9,7 @@ class DatabaseSeeder extends Seeder
 {
     /**
      * Seed the application's database.
-     */
+     */  
     public function run(): void
     {
 
@@ -18,9 +18,8 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Admin',
                 'email' => 'admin@gmail.com',
                 'password' => 'admin',
-            
-
         ]);
+        
         \App\Models\User::factory()->create([
             
                 'name' => 'User',
@@ -29,5 +28,14 @@ class DatabaseSeeder extends Seeder
             
 
         ]);
+        \App\Models\User::factory()->create([
+            
+                'name' => 'Athar',
+                'email' => 'athar@gmail.com',
+                'password' => 'athar',
+            
+
+        ]);
+        \App\Models\User::factory(2)->create();
     }
 }

@@ -9,6 +9,7 @@
                     @csrf
                     <input type="text" placeholder="Name" name="name">
                     <input type="email" placeholder="Email" name="email">
+                    <input type="number" name="phone" placeholder="Phone Number">
                     <input type="password" name="password" placeholder="Password">
                     <input type="password" name="password_confirmation" placeholder="Confirm Password" required
                         autocomplete="new-password">

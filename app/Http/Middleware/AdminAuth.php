@@ -15,6 +15,6 @@ class AdminAuth
      */
     public function handle(Request $request, Closure $next)
     {
-        return $request->user()->email == "admin@gmail.com" ? $next($request) : abort(403);
+        return $request->user()->email == "admin@gmail.com" ? $next($request) : abort(403, 'access denied');
     }
 }

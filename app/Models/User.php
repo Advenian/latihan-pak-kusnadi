@@ -17,6 +17,16 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    public function fixer()
+    {
+        return $this->hasOne(Fixer::class);
+    }
+
+    public function client()
+    {
+        return $this->hasOne(Client::class);
+    }
+
     protected $fillable = [
         'name',
         'email',

@@ -179,3 +179,26 @@ canvas {
 
 
 }
+
+.plus-button{
+    padding: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
+    background-color: transparent;
+    border: 0;
+}
+.plus-button:hover{
+    /* padding-left: 20px;
+    padding-right: 20px; */
+    background-color: rgb(63,103,145);
+    /* border: 1px solid rgb(63,103,145); */
+    transition: 250ms ease-in-out;
+}
+
+.plus-button .fa-plus{
+    color: rgb(63,103,145);
+    transition: 250ms ease-in-out;
+}
+.plus-button:hover .fa-plus{
+    color: rgb(0, 255, 251);
+}
