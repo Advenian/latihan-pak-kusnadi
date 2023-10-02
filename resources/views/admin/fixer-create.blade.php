@@ -35,7 +35,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">NIK</label>
-                    <input type="number" class="form-control"value="{{ old('nik') }}" id="exampleInputEmail1"
+                    <input type="number"  class="form-control"value="{{ old('nik') }}" id="exampleInputEmail1"
                         placeholder="Enter NIK" name="nik">
                     @error('nik')
                         <p>{{ $message }}</p>

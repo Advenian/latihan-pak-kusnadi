@@ -29,6 +29,8 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        if(auth()->user()->email === 'admin@gmail.com' ) return redirect()->intended(route('admin.index'));
+
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 

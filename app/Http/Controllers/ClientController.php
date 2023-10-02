@@ -35,7 +35,7 @@ class ClientController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'unique:users', 'max:255'],
             'password' => ['required', 'string', 'min:8'],
-            'phone' => ['required', 'numeric', 'digits_between:1,10'],
+            'phone' => ['required', 'numeric', 'digits_between:8,12'],
         ]);
 
         $user = User::create(
@@ -84,7 +84,7 @@ class ClientController extends Controller
             'name' => [ 'string', 'max:255'],
             'email' => [ 'email', Rule::unique('users', 'email')->ignore($client->user_id), 'max:255'],
             'password' => [ 'nullable','string','min:8'],
-            'phone' => [ 'numeric', 'digits_between:1,10'],
+            'phone' => [ 'numeric', 'digits_between:8,12'],
         ]);
 
         if (!empty($data['password'])) {
@@ -112,6 +112,6 @@ class ClientController extends Controller
     {
         
         $client->user()->delete();
-        return redirect()->route('admin.fixer.index')->with('Success', 'data has been successfully deleted!');
+        return redirect()->route('admin.client.index')->with('Success', 'data has been successfully deleted!');
     }
 }

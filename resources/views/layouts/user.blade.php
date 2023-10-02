@@ -64,6 +64,35 @@
     <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> <!-- stats.js lib -->
     <script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
     <script src="{{ asset('/user/assets/js/custom.js') }}"></script>
+    <script>
+        // JavaScript to display image preview
+        // document.getElementById('imageInput').addEventListener('change', function () {
+        //     const fileInput = this;
+        //     const imagePreview = document.getElementById('imagePreview');
+
+        //     if (fileInput.files && fileInput.files[0]) {
+        //         const reader = new FileReader();
+
+        //         reader.onload = function (e) {
+        //             imagePreview.src = e.target.result;
+        //             imagePreview.style.display = 'block';
+        //         };
+
+        //         reader.readAsDataURL(fileInput.files[0]);
+        //     }
+        // });
+        
+        function showPreview() {
+           const imgInp = document.getElementById("imageInput")
+           const imagePreview = document.getElementById("imagePreview")
+
+            const [file] = imgInp.files
+            if (file) {
+                imagePreview.style.display = 'block';
+                imagePreview.src = URL.createObjectURL(file)
+            }
+        }
+    </script>
 </body>
 
 </html>

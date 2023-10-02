@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Athar',
                 'email' => 'athar@gmail.com',
                 'password' => 'athar',
+                // 'phone' => '0816999832',
             
 
         ]);

@@ -15,7 +15,7 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-            <table id="tableFix" class="table table-bordered table-striped">
+            <table id="tableFix" style="width: 99%" class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th>N0</th>

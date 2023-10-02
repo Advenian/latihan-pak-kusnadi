@@ -18,11 +18,13 @@ class AdminDashboardController extends Controller
     {
         return view('admin.index');
     }
+    public function user()
+    {
+        return view('admin.user');
+    }
     public function hardware()
     {
-        $users = User::all();
-        return response()->json($users);
-        // return view('admin.hardware', compact('users'));
+        return view('admin.hardware');  
     }
     public function software()
     {

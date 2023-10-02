@@ -10,7 +10,7 @@ class Client extends Model
     use HasFactory;
 
     public function appointments(){
-        return $this->hasMany(Appointment::class);
+        return $this->hasMany(SoftwareAppointment::class);
     }
     public function user(){
         return $this->belongsTo(User::class);

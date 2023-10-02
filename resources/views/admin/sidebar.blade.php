@@ -1,10 +1,10 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{ url('index3.html') }}" class="brand-link">
+    <p class="brand-link">
         <img src="{{ asset('/admin/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
             class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">MISIBANG</span>
-    </a>
+    </p>
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -15,7 +15,7 @@
                     alt="User Image">
             </div>
             <div class="info">
-                <a href="{{ url('#') }}" class="d-block">{{ auth()->user()->name }}</a>
+                <a href="{{ route('admin.index') }}" class="d-block">{{ auth()->user()->name }}'s Dashboard</a>
             </div>
         </div>
 
@@ -39,6 +39,13 @@
                 <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
 
+
+                <li class="nav-item">
+                    <a href="{{ route('admin.user-page') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>User Page</p>
+                    </a>
+                </li>
                 <li class="nav-item ">
                     <a href="{{ url('#') }}" class="nav-link active">
                         <i class="nav-icon fas fa-clipboard-list"></i>
@@ -49,21 +56,24 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('admin.hardware') }}" class="nav-link {{ request()->routeIs('admin.hardware') ? 'active' : ' '}}">
+                            <a href="{{ route('admin.hardware.index') }}"
+                                class="nav-link {{ request()->routeIs('admin.hardware.index') ? 'active' : ' ' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Hardware Problems</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.software')}}" class="nav-link {{ request()->routeIs('admin.software') ? 'active' : ' '}}">
+                            <a href="{{ route('admin.software.index') }}"
+                                class="nav-link {{ request()->routeIs('admin.software.index') ? 'active' : ' ' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Software Problems</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.pcbuild') }}" class="nav-link {{ request()->routeIs('admin.pcbuild') ? 'active' : ' '}}">
+                            <a href="{{ route('admin.diagnostic.index') }}"
+                                class="nav-link {{ request()->routeIs('admin.diagnostic.index') ? 'active' : ' ' }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>PC Building</p>
+                                <p>Diagnostics</p>
                             </a>
                         </li>
                     </ul>
@@ -82,32 +92,6 @@
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Accounts</p>
                             </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ url('./index3.html') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Recent History</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ url('#') }}" class="nav-link">
-                                <i class="nav-icon fas fa-circle"></i>
-                                <p>
-                                    Page
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ url('#') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>
-                                            About
-                                            
-                                        </p>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
                     </ul>
                 </li>

@@ -37,7 +37,7 @@ class FixerController extends Controller
             'email' => ['required', 'email', 'unique:users', 'max:255'],
             'password' => ['required', 'string', 'min:8'],
             'nik' => ['required', 'string', 'min:16'],
-            'phone' => ['required', 'numeric', 'digits_between:1,10'],
+            'phone' => ['required', 'numeric', 'digits_between:8,12'],
             'address' => ['required', 'string', 'max:500'],
         ]);
 
@@ -129,7 +129,7 @@ class FixerController extends Controller
             'email' => ['sometimes','email',Rule::unique('users')->ignore($fixer->user->id),'max:255'],
             'password' => ['nullable', 'string', 'min:8'],
             'nik' => ['sometimes', 'string', 'min:16'],
-            'phone' => ['sometimes', 'numeric', 'digits_between:1,10'],
+            'phone' => ['sometimes', 'numeric', 'digits_between:8,12'],
             'address' => ['sometimes', 'string', 'max:500'],
         ]);
 
