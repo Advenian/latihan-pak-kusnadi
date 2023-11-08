@@ -32,6 +32,8 @@ Route::get('/user/profile', function () {
 
 
 Route::post('software/store', [AppointmentsController::class, 'software_store'])->name('user.software.store');
+Route::post('hardware/store', [AppointmentsController::class, 'hardware_store'])->name('user.hardware.store');
+
 Route::prefix('administrator')->middleware(['auth', 'admin.auth'])->group(function () {
     Route::get('/', [AdminDashboardController::class, 'dashboard'])->name('admin.index');
     Route::get('user-page', [AdminDashboardController::class, 'user'])->name('admin.user-page');
@@ -54,7 +56,7 @@ Route::prefix('administrator')->middleware(['auth', 'admin.auth'])->group(functi
     Route::delete('client/{client:id}/delete', [ClientController::class, 'destroy'])->name('admin.client.destroy');
     // Route::match(['patch', 'put'],'fixer/edit/{id}/update', [FixerController::class, 'update'])->name('admin.fixer.update');
 
-    Route::post('software/{id}/pdf', [AppointmentsController::class, 'pdf_report'])->name('pdf.report');
+    Route::post('software/{id}/pdf', [AppointmentsController::class, 'pdf_report_software'])->name('pdf.report');
     Route::get('software', [AppointmentsController::class, 'software_index'])->name('admin.software.index');
     Route::patch('software/assign/{id}', [AppointmentsController::class, 'software_assignFixer'])->name('admin.software.assign');
     Route::get('software/{softwareAppointment}/detail', [AppointmentsController::class, 'software_detail'])->name('admin.software.detail');
@@ -62,6 +64,11 @@ Route::prefix('administrator')->middleware(['auth', 'admin.auth'])->group(functi
 
 
     Route::get('hardware', [AppointmentsController::class, 'hardware_index'])->name('admin.hardware.index');
+    Route::patch('hardware/assign/{id}', [AppointmentsController::class, 'hardware_assignFixer'])->name('admin.hardware.assign');
+    Route::get('hardware/{hardwareAppointment}/detail', [AppointmentsController::class, 'hardware_detail'])->name('admin.hardware.detail');
+    Route::delete('hardware/{hardwareAppointment}/destroy', [AppointmentsController::class, 'hardware_destroy'])->name('admin.hardware.destroy');
+    Route::post('hardware/{id/pdf', [AppointmentsController::class, 'pdf_report_hardware'])->name('admin.hardware.pdf');
+
 
 
     Route::get('diagnostic', [AppointmentsController::class, 'diagnostic_index'])->name('admin.diagnostic.index');

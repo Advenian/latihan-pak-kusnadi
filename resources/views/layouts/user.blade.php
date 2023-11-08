@@ -32,6 +32,7 @@
     <link href="{{ asset('/user/assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/user/assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
 
+
     <!-- Template Main CSS File -->
     <link href="{{ asset('/user/assets/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('/user/assets/css/custom.css') }}" rel="stylesheet">
@@ -43,6 +44,11 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+    <style>
+        .ul-tabs {
+            width: clamp(40px, 100vw, 90%)
+        }
+    </style>
 </head>
 
 <body>
@@ -81,10 +87,10 @@
         //         reader.readAsDataURL(fileInput.files[0]);
         //     }
         // });
-        
+
         function showPreview() {
-           const imgInp = document.getElementById("imageInput")
-           const imagePreview = document.getElementById("imagePreview")
+            const imgInp = document.getElementById("imageInput")
+            const imagePreview = document.getElementById("imagePreview")
 
             const [file] = imgInp.files
             if (file) {

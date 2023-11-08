@@ -26,8 +26,10 @@ class AppointmentsController extends Controller
     }
     public function hardware_index()
     {
-        $hardwareAppointments = HardwareAppointment::all();
-        return view('admin.hardware', compact('hardwareAppointments'));
+        $hardwareAppointments = HardwareAppointment::with('client', 'fixer')->get();
+        $clients = $hardwareAppointments->pluck('client')->unique();
+        $fixers = Fixer::all();
+        return view('admin.hardware', compact('hardwareAppointments', 'clients', 'fixers'));
     }
     public function diagnostic_index()
     {
@@ -78,6 +80,64 @@ class AppointmentsController extends Controller
         // dd($hasil);
         return redirect(route('user.home'));
     }
+    public function hardware_store(Request $request)
+    {
+        // return ($request);
+
+        $request->validate([
+            'issue_description' => 'required|string',
+            'os' => 'required|string',
+            'brand' => 'required|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'date_time' => 'required',
+        ]);
+
+
+        $clientId = auth()->user()->client->id;
+        $imagePath = $request->file('image')->store('imageUpload');
+
+        HardwareAppointment::create([
+            'fixer_id' => null,
+            'client_id' => $clientId,
+            // 'client_id' => $request->clients->client_id,
+            'os' => $request->os,
+            'issue_description' => $request->issue_description,
+            'brand' => $request->brand,
+            'image' => $imagePath,
+            'date_time' => $request->date_time,
+
+        ]);
+
+        // dd($hasil);
+        // return ($request);
+        return redirect(route('user.home'));
+    }
+    public function hardware_assignFixer(Request $request, string $id)
+    {
+        $request->validate([
+            'fixer' => 'required|exists:fixers,id', // Adjust validation rules as needed
+        ]);
+
+        // Get the selected fixer ID from the form input
+        $selectedFixerId = $request->input('fixer');
+        $hardwareAppointment = HardwareAppointment::find($id);
+
+        if ($hardwareAppointment && is_null($hardwareAppointment->fixer_id)) {
+            $hardwareAppointment->update([
+                'fixer_id' => $selectedFixerId,
+                'status' => 'assigned'
+            ]);
+
+            return redirect()->route('admin.hardware.index')->with('success', 'Appointment assigned successfully');
+        } else {
+            $hardwareAppointment->update([
+                'fixer_id' => $selectedFixerId,
+                'status' => 'assigned'
+            ]);
+        }
+
+        return redirect()->route('admin.hardware.index')->with('error', 'Appointment could not be assigned');
+    }
     public function software_assignFixer(Request $request, string $id)
     {
         $request->validate([
@@ -118,7 +178,7 @@ class AppointmentsController extends Controller
         return view('admin.software-detail', compact('softwareAppointment'));
     }
 
-    public function pdf_report($id)
+    public function pdf_report_software($id)
     {
         $softwareAppointment = SoftwareAppointment::with('fixer', 'client')->find($id);
 
@@ -127,6 +187,18 @@ class AppointmentsController extends Controller
         }
 
         $pdf = Pdf::loadView('pdf.report', compact('softwareAppointment'));
+
+        return $pdf->download('report.pdf');
+    }
+    public function pdf_report_hardware($id)
+    {
+        $hardwareAppointment = HardwareAppointment::with('fixer', 'client')->find($id);
+
+        if (!$hardwareAppointment) {
+            abort(404);
+        }
+
+        $pdf = Pdf::loadView('pdf.report', compact('hardwareAppointment'));
 
         return $pdf->download('report.pdf');
     }
@@ -159,9 +231,14 @@ class AppointmentsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function software_destroy(SoftwareAppointment $softwareAppointmentId)
+    public function software_destroy(SoftwareAppointment $softwareAppointment)
     {
-        $softwareAppointmentId->delete();
+        $softwareAppointment->delete();
         return redirect()->route('admin.software.index')->with('Success', 'data has been successfully deleted!');
+    }
+    public function hardware_destroy(HardwareAppointment $hardwareAppointment)
+    {
+        $hardwareAppointment->delete();
+        return redirect()->route('admin.hardware.index')->with('Success', 'data has been successfully deleted!');
     }
 }

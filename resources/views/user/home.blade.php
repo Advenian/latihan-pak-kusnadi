@@ -99,9 +99,522 @@
     <section id="hero">
         <div class="hero-container" data-aos="fade-up">
             <h1>Misi Bang </h1>
-            <h2>Your local team of computer computer builders and engineers!</h2>
+            <h2>Your local team of computer builders and engineers!</h2>
             <a href="{{ url('#about') }}" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
+            <!-- Modal -->
+            {{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" style="margin-left: 15vw;margin-right: 15vw">
+                    <div>
+                        <div class="modal-content " style="width: 70vw">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div style="width: 50%" class="mx-auto">
+                                    <ul class="nav nav-tabs justify-content-center mx-auto ul-tabs"
+                                        style="width: clamp(40px, 100vw, 90%)" id="myTab" role="tablist">
+                                        <li class="nav-item col-4" role="presentation">
+                                            <button class="nav-link active mx-auto" id="home-tab" data-bs-toggle="tab"
+                                                data-bs-target="#home" type="button" role="tab" aria-controls="home"
+                                                aria-selected="true">Software</button>
+                                        </li>
+                                        <li class="nav-item col-4" role="presentation">
+                                            <button class="nav-link mx-auto" id="profile-tab" data-bs-toggle="tab"
+                                                data-bs-target="#profile" type="button" role="tab"
+                                                aria-controls="profile" aria-selected="false">Hardware</button>
+                                        </li>
+                                        <li class="nav-item col-4" role="presentation">
+                                            <button class="nav-link mx-auto" id="contact-tab" data-bs-toggle="tab"
+                                                data-bs-target="#contact" type="button" role="tab"
+                                                aria-controls="contact" aria-selected="false">Diagnostic</button>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content" id="myTabContent">
+                                        <div class="tab-pane fade show active" id="home" role="tabpanel"
+                                            aria-labelledby="home-tab">
+                                            <form action="{{ route('user.software.store') }}" method="POST"
+                                                enctype="multipart/form-data">
+                                                @csrf
+                                                <div class="card-body">
+                                                    <div class="form-group">
+                                                        <label for="exampleInputEmail1">Issue</label>
+                                                        <input type="text" class="form-control"
+                                                            value="{{ old('issue_description') }}"
+                                                            id="exampleInputEmail1"
+                                                            placeholder="Please provide a description of your issue"
+                                                            name="issue_description">
+                                                        @error('issue_description')
+                                                            <p>{{ $message }}</p>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="exampleInputEmail1">Operating System</label>
+                                                        <input type="text" class="form-control"
+                                                            value="{{ old('os') }}" id="exampleInputEmail1"
+                                                            placeholder="Please provide your operating system and its version"
+                                                            name="os">
+                                                        @error('os')
+                                                            <p>{{ $message }}</p>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Tasks to Perform:</label><br>
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                id="virus_removal" name="tasks[]" value="Virus Removal">
+                                                            <label class="form-check-label" for="virus_removal">Virus
+                                                                Removal</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                id="update_software" name="tasks[]"
+                                                                value="Software Update">
+                                                            <label class="form-check-label" for="update_software">Software
+                                                                Update</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                id="system_optimization" name="tasks[]"
+                                                                value="System Optimization">
+                                                            <label class="form-check-label"
+                                                                for="system_optimization">System
+                                                                Optimization</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="images">Upload Image</label>
+                                                        <input type="file" class="form-control-file"
+                                                            onchange="showPreview()" id="imageInput" name="image">
+                                                        <img id="imagePreview" src="" alt="Image Preview"
+                                                            style="max-width: 200px; display: none;">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="date_time">Date and Time:</label>
+                                                        <input type="datetime-local" class="form-control" id="date_time"
+                                                            name="date_time" required>
+                                                    </div>
+
+
+                                                </div>
+                                                <!-- /.card-body -->
+
+                                                <div class="card-footer">
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="tab-pane fade" id="profile" role="tabpanel"
+                                            aria-labelledby="profile-tab">
+                                            <form action="{{ route('admin.fixer.store') }}" method="POST">
+                                                @csrf
+                                                <div class="card-body">
+                                                    <div class="form-group">
+                                                        <label for="exampleInputEmail1">Issue</label>
+                                                        <input type="text" class="form-control"
+                                                            value="{{ old('name') }}" id="exampleInputEmail1"
+                                                            placeholder="Please provide a description of your issue"
+                                                            name="name">
+                                                        @error('name')
+                                                            <p>{{ $message }}</p>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="exampleInputEmail1">Operating System</label>
+                                                        <input type="text" class="form-control"
+                                                            value="{{ old('name') }}" id="exampleInputEmail1"
+                                                            placeholder="Please provide your operating system and its version"
+                                                            name="name">
+                                                        @error('name')
+                                                            <p>{{ $message }}</p>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Tasks to Perform:</label><br>
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                id="virus_removal" name="tasks[]" value="Virus Removal">
+                                                            <label class="form-check-label" for="virus_removal">Virus
+                                                                Removal</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                id="update_software" name="tasks[]"
+                                                                value="Software Update">
+                                                            <label class="form-check-label" for="update_software">Software
+                                                                Update</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                id="system_optimization" name="tasks[]"
+                                                                value="System Optimization">
+                                                            <label class="form-check-label"
+                                                                for="system_optimization">System
+                                                                Optimization</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="images">Upload Images (multiple allowed):</label>
+                                                        <input type="file" class="form-control-file" id="images"
+                                                            name="images[]" multiple>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="date_time">Date and Time:</label>
+                                                        <input type="datetime-local" class="form-control" id="date_time"
+                                                            name="date_time" required>
+                                                    </div>
+
+
+                                                </div>
+                                                <!-- /.card-body -->
+
+                                                <div class="card-footer">
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="tab-pane fade" id="contact" role="tabpanel"
+                                            aria-labelledby="contact-tab">
+                                            <form action="{{ route('admin.fixer.store') }}" method="POST">
+                                                @csrf
+                                                <div class="card-body">
+                                                    <div class="form-group">
+                                                        <label for="exampleInputEmail1">Issue</label>
+                                                        <input type="text" class="form-control"
+                                                            value="{{ old('name') }}" id="exampleInputEmail1"
+                                                            placeholder="Please provide a description of your issue"
+                                                            name="name">
+                                                        @error('name')
+                                                            <p>{{ $message }}</p>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="exampleInputEmail1">Operating System</label>
+                                                        <input type="text" class="form-control"
+                                                            value="{{ old('name') }}" id="exampleInputEmail1"
+                                                            placeholder="Please provide your operating system and its version"
+                                                            name="name">
+                                                        @error('name')
+                                                            <p>{{ $message }}</p>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Tasks to Perform:</label><br>
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                id="virus_removal" name="tasks[]" value="Virus Removal">
+                                                            <label class="form-check-label" for="virus_removal">Virus
+                                                                Removal</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                id="update_software" name="tasks[]"
+                                                                value="Software Update">
+                                                            <label class="form-check-label" for="update_software">Software
+                                                                Update</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                id="system_optimization" name="tasks[]"
+                                                                value="System Optimization">
+                                                            <label class="form-check-label"
+                                                                for="system_optimization">System
+                                                                Optimization</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="images">Upload Images (multiple allowed):</label>
+                                                        <input type="file" class="form-control-file" id="images"
+                                                            name="images[]" multiple>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="date_time">Date and Time:</label>
+                                                        <input type="datetime-local" class="form-control" id="date_time"
+                                                            name="date_time" required>
+                                                    </div>
+
+
+                                                </div>
+                                                <!-- /.card-body -->
+
+                                                <div class="card-footer">
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> --}}
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" style="margin-left: 15vw;margin-right: 15vw">
+                    <div>
+                        <div class="modal-content " style="width: 70vw">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            @auth
+                                <div class="modal-body">
+                                    <div style="width: 50%" class="mx-auto">
+                                        <ul class="nav nav-tabs justify-content-center mx-auto ul-tabs"
+                                            style="width: clamp(40px, 100vw, 90%)" id="myTab" role="tablist">
+                                            <li class="nav-item col-4" role="presentation">
+                                                <button class="nav-link active mx-auto" id="home-tab" data-bs-toggle="tab"
+                                                    data-bs-target="#home" type="button" role="tab" aria-controls="home"
+                                                    aria-selected="true">Software</button>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="myTabContent">
+                                            <div class="tab-pane fade show active" id="home" role="tabpanel"
+                                                aria-labelledby="home-tab">
+                                                <form action="{{ route('user.software.store') }}" method="POST"
+                                                    enctype="multipart/form-data">
+                                                    @csrf
+                                                    <div class="card-body">
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Issue</label>
+                                                            <input type="text" class="form-control"
+                                                                value="{{ old('issue_description') }}" id="exampleInputEmail1"
+                                                                placeholder="Please provide a description of your issue"
+                                                                name="issue_description">
+                                                            @error('issue_description')
+                                                                <p>{{ $message }}</p>
+                                                            @enderror
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Operating System</label>
+                                                            <input type="text" class="form-control"
+                                                                value="{{ old('os') }}" id="exampleInputEmail1"
+                                                                placeholder="Please provide your operating system and its version"
+                                                                name="os">
+                                                            @error('os')
+                                                                <p>{{ $message }}</p>
+                                                            @enderror
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Tasks to Perform:</label><br>
+                                                            <div class="form-check">
+                                                                <input type="checkbox" class="form-check-input"
+                                                                    id="virus_removal" name="tasks[]" value="Virus Removal">
+                                                                <label class="form-check-label" for="virus_removal">Virus
+                                                                    Removal</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input type="checkbox" class="form-check-input"
+                                                                    id="update_software" name="tasks[]"
+                                                                    value="Software Update">
+                                                                <label class="form-check-label" for="update_software">Software
+                                                                    Update</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input type="checkbox" class="form-check-input"
+                                                                    id="system_optimization" name="tasks[]"
+                                                                    value="System Optimization">
+                                                                <label class="form-check-label"
+                                                                    for="system_optimization">System
+                                                                    Optimization</label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="images">Upload Image</label>
+                                                            <input type="file" class="form-control-file"
+                                                                onchange="showPreview()" id="imageInput" name="image">
+                                                            <img id="imagePreview" src="" alt="Image Preview"
+                                                                style="max-width: 200px; display: none;">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="date_time">Date and Time:</label>
+                                                            <input type="datetime-local" class="form-control" id="date_time"
+                                                                name="date_time" required>
+                                                        </div>
+
+
+                                                    </div>
+                                                    <!-- /.card-body -->
+
+                                                    <div class="card-footer">
+                                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            @else
+                                <a href="{{ route('login') }}">Log In!</a>
+
+                            @endauth
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" style="margin-left: 15vw;margin-right: 15vw">
+                    <div>
+                        <div class="modal-content " style="width: 70vw">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            @auth
+                                <div class="modal-body">
+                                    <div style="width: 50%" class="mx-auto">
+                                        <ul class="nav nav-tabs justify-content-center mx-auto ul-tabs"
+                                            style="width: clamp(40px, 100vw, 90%)" id="myTab" role="tablist">
+                                            <li class="nav-item col-4" role="presentation">
+                                                <button class="nav-link active mx-auto" id="home-tab" data-bs-toggle="tab"
+                                                    data-bs-target="#home" type="button" role="tab"
+                                                    aria-controls="home" aria-selected="true">Hardware</button>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="myTabContent">
+                                            <div class="tab-pane fade show active" id="home" role="tabpanel"
+                                                aria-labelledby="home-tab">
+                                                <form action="{{ route('user.hardware.store') }}" method="POST"
+                                                    enctype="multipart/form-data">
+                                                    @csrf
+                                                    <div class="card-body">
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Issue</label>
+                                                            <input type="text" class="form-control"
+                                                                value="{{ old('issue_description') }}"
+                                                                id="exampleInputEmail1"
+                                                                placeholder="Please provide a description of your issue"
+                                                                name="issue_description">
+                                                            @error('issue_description')
+                                                                <p>{{ $message }}</p>
+                                                            @enderror
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Operating System</label>
+                                                            <input type="text" class="form-control"
+                                                                value="{{ old('os') }}" id="exampleInputEmail1"
+                                                                placeholder="Please provide your operating system and its version"
+                                                                name="os">
+                                                            @error('os')
+                                                                <p>{{ $message }}</p>
+                                                            @enderror
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Operating System</label>
+                                                            <select id="" name="brand">
+                                                                <option value="ASUS">ASUS</option>
+                                                                <option value="Acer">Acer</option>
+                                                                <option value="Lenovo">Lenovo</option>
+                                                                <option value="Hp">Hp</option>
+                                                                <option value="Custom">Custom</option>
+                                                            </select>
+                                                            @error('os')
+                                                                <p>{{ $message }}</p>
+                                                            @enderror
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="images">Upload Image</label>
+                                                            <input type="file" class="form-control-file"
+                                                                onchange="showPreview()" id="imageInput" name="image">
+                                                            <img id="imagePreview" src="" alt="Image Preview"
+                                                                style="max-width: 200px; display: none;">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="date_time">Date and Time:</label>
+                                                            <input type="datetime-local" class="form-control" id="date_time"
+                                                                name="date_time" required>
+                                                        </div>
+
+
+                                                    </div>
+                                                    <!-- /.card-body -->
+
+                                                    <div class="card-footer">
+                                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            @else
+                                <a href="{{ route('login') }}">Log In!</a>
+                            @endauth
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{-- <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" style="margin-left: 15vw;margin-right: 15vw">
+                    <div>
+                        <div class="modal-content " style="width: 70vw">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div style="width: 50%" class="mx-auto">
+                                    <ul class="nav nav-tabs justify-content-center mx-auto ul-tabs"
+                                        style="width: clamp(40px, 100vw, 90%)" id="myTab" role="tablist">
+                                        <li class="nav-item col-4" role="presentation">
+                                            <button class="nav-link active mx-auto" id="home-tab" data-bs-toggle="tab"
+                                                data-bs-target="#home" type="button" role="tab"
+                                                aria-controls="home" aria-selected="true">Diagnostic</button>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content" id="myTabContent">
+                                        <div class="tab-pane fade show active" id="home" role="tabpanel"
+                                            aria-labelledby="home-tab">
+                                            
+                                            <a href="">Diagnosis</a>
+                                            <a href="">Diagnosis+Fix</a>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> --}}
+
+
         </div>
+
     </section><!-- End Hero -->
 
     <main id="main">
@@ -113,10 +626,16 @@
                 <div class="row no-gutters">
                     <div class="content col-xl-5 d-flex align-items-stretch" data-aos="fade-up">
                         <div class="content">
-                            <h3>Voluptatem dignissimos provident quasi</h3>
+                            <h3>About Us</h3>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
+                                Welcome to Misibang - Your Trusted Source for Computer and Laptop Repairs!
+
+                            </p>
+                            <p>
+
+                                We understand the frustration that comes with a malfunctioning computer or
+                                laptop. Whether it's a cracked screen, a virus infection, or a mysterious hardware issue,
+                                we're here to make your life easier!
                             </p>
                             <a href="{{ url('#') }}" class="about-btn">About us <i
                                     class="bx bx-chevron-right"></i></a>
@@ -124,29 +643,26 @@
                     </div>
                     <div class="col-xl-7 d-flex align-items-stretch">
                         <div class="icon-boxes d-flex flex-column justify-content-center">
-                            <div class="row">
+                            <div class="row ">
                                 <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
-                                    <i class="bx bx-receipt"></i>
-                                    <h4>Corporis voluptates sit</h4>
-                                    <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut
-                                        aliquip</p>
+                                    <i class="bx bx-book-open"></i>
+                                    <h4>Our Story</h4>
+                                    <p>Misibang was founded by a team of passionate tech enthusiasts who recognized the need
+                                        for a convenient and efficient solution to computer and laptop problems.</p>
                                 </div>
                                 <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
-                                    <i class="bx bx-cube-alt"></i>
-                                    <h4>Ullamco laboris nisi</h4>
-                                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                                        deserunt</p>
-                                </div>
-                                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
-                                    <i class="bx bx-images"></i>
-                                    <h4>Labore consequatur</h4>
-                                    <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere
-                                    </p>
+                                    <i class="bx bx-award"></i>
+                                    <h4>What Sets Us Apart</h4>
+                                    <p>We believe in transparent pricing to make quality repair services accessible to
+                                        everyone. Customer satisfaction is our top priority, and we strive to exceed your
+                                        expectations.</p>
                                 </div>
                                 <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
-                                    <i class="bx bx-shield"></i>
-                                    <h4>Beatae veritatis</h4>
-                                    <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
+                                    <i class="bx bx-phone"></i>
+                                    <h4>Get in Touch</h4>
+                                    <p>Ready to get your tech back in top shape? Contact Misibang today to schedule an
+                                        appointment. We're here to eliminate your tech troubles and ensure you stay
+                                        connected and productive.</p>
                                 </div>
                             </div>
                         </div><!-- End .content-->
@@ -176,6 +692,11 @@
                             <h4 class="title"><a href="{{ url('') }}">Software</a></h4>
                             <p class="description">We specialize in diagnosing and resolving a wide range of software
                                 problems, ensuring that your computer runs smoothly and efficiently.</p>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
+                                Order!
+                            </button>
                         </div>
                     </div>
                     <div
@@ -183,19 +704,30 @@
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
                             <div class="icon"><i class="bx bx-world"></i></div>
                             <h4 class="title"><a href="{{ url('') }}">Hardware</a></h4>
-                            <p class="description">We offer quick and reliable hardware solutions to get your device back in
+                            <p class="description">We offer quick and reliable hardware solutions to get your device back
+                                in
                                 optimal working condition.</p>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal1">
+                                Order!
+                            </button>
                         </div>
                     </div>
-                    <div
+                    {{-- <div
                         class="col-md-6 col-lg-3 mt-3  justify-content-center d-flex align-items-stretch mb-5 mb-lg-0 w-50">
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
                             <div class="icon"><i class="bx bx-world"></i></div>
                             <h4 class="title"><a href="{{ url('') }}">Diagnostic</a></h4>
                             <p class="description">Our experienced technicians will thoroughly examine your device,
                                 identify any underlying issues, and provide you with a detailed report.</p>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal2">
+                                Launch demo modal
+                            </button>
                         </div>
-                    </div>
+                    </div> --}}
 
 
                 </div>
@@ -214,7 +746,7 @@
                             <i class="bi bi-emoji-smile"></i>
                             <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1"
                                 class="purecounter"></span>
-                            <p><strong>Happy Clients</strong> consequuntur quae</p>
+                            <p><strong>Happy Clients</strong> </p>
                         </div>
                     </div>
 
@@ -223,7 +755,7 @@
                             <i class="bi bi-journal-richtext"></i>
                             <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1"
                                 class="purecounter"></span>
-                            <p><strong>Projects</strong> adipisci atque cum quia aut</p>
+                            <p><strong>Projects</strong> </p>
                         </div>
                     </div>
 
@@ -232,7 +764,7 @@
                             <i class="bi bi-headset"></i>
                             <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1"
                                 class="purecounter"></span>
-                            <p><strong>Hours Of Support</strong> aut commodi quaerat</p>
+                            <p><strong>Hours Of Support</strong> </p>
                         </div>
                     </div>
 
@@ -241,7 +773,7 @@
                             <i class="bi bi-people"></i>
                             <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1"
                                 class="purecounter"></span>
-                            <p><strong>Hard Workers</strong> rerum asperiores dolor</p>
+                            <p><strong>Hard Workers</strong></p>
                         </div>
                     </div>
 
@@ -255,217 +787,19 @@
             <div class="container" data-aos="zoom-in">
 
                 <div class="text-center">
-                    <h3>Call To Action</h3>
-                    <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                        mollit anim id est laborum.</p>
-                    <a class="cta-btn" href="{{ url('#') }}">Call To Action</a>
+                    <h3>Make an Appointment Now!</h3>
+                    <p> Are you ready to schedule a computer or laptop repair appointment with Misibang? We've made it easy
+                        for you to get started.</p>
+                    <a class="cta-btn" href="{{ url('#') }}">Order</a>
+
+
+
                 </div>
 
             </div>
         </section><!-- End Cta Section -->
-        <div style="width: 50%" class="mx-auto">
-            <ul class="nav nav-tabs justify-content-center mx-auto" style="width: 90%" id="myTab" role="tablist">
-                <li class="nav-item col-4" role="presentation">
-                    <button class="nav-link active mx-auto" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
-                        type="button" role="tab" aria-controls="home" aria-selected="true">Software</button>
-                </li>
-                <li class="nav-item col-4" role="presentation">
-                    <button class="nav-link mx-auto" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
-                        type="button" role="tab" aria-controls="profile" aria-selected="false">Hardware</button>
-                </li>
-                <li class="nav-item col-4" role="presentation">
-                    <button class="nav-link mx-auto" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact"
-                        type="button" role="tab" aria-controls="contact" aria-selected="false">Diagnostic</button>
-                </li>
-            </ul>
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <form action="{{ route('user.software.store') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Issue</label>
-                                <input type="text" class="form-control" value="{{ old('issue_description') }}"
-                                    id="exampleInputEmail1" placeholder="Please provide a description of your issue"
-                                    name="issue_description">
-                                @error('issue_description')
-                                    <p>{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Operating System</label>
-                                <input type="text" class="form-control" value="{{ old('os') }}"
-                                    id="exampleInputEmail1"
-                                    placeholder="Please provide your operating system and its version" name="os">
-                                @error('os')
-                                    <p>{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label>Tasks to Perform:</label><br>
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="virus_removal" name="tasks[]"
-                                        value="Virus Removal">
-                                    <label class="form-check-label" for="virus_removal">Virus Removal</label>
-                                </div>
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="update_software" name="tasks[]"
-                                        value="Software Update">
-                                    <label class="form-check-label" for="update_software">Software Update</label>
-                                </div>
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="system_optimization"
-                                        name="tasks[]" value="System Optimization">
-                                    <label class="form-check-label" for="system_optimization">System Optimization</label>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="images">Upload Image</label>
-                                <input type="file" class="form-control-file" onchange="showPreview()" id="imageInput" name="image" >
-                                <img id="imagePreview" src="" alt="Image Preview" style="max-width: 200px; display: none;">
-                            </div>
-                            <div class="form-group">
-                                <label for="date_time">Date and Time:</label>
-                                <input type="datetime-local" class="form-control" id="date_time" name="date_time"
-                                    required>
-                            </div>
-
-
-                        </div>
-                        <!-- /.card-body -->
-
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                    <form action="{{ route('admin.fixer.store') }}" method="POST">
-                        @csrf
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Issue</label>
-                                <input type="text" class="form-control" value="{{ old('name') }}"
-                                    id="exampleInputEmail1" placeholder="Please provide a description of your issue"
-                                    name="name">
-                                @error('name')
-                                    <p>{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Operating System</label>
-                                <input type="text" class="form-control" value="{{ old('name') }}"
-                                    id="exampleInputEmail1"
-                                    placeholder="Please provide your operating system and its version" name="name">
-                                @error('name')
-                                    <p>{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label>Tasks to Perform:</label><br>
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="virus_removal" name="tasks[]"
-                                        value="Virus Removal">
-                                    <label class="form-check-label" for="virus_removal">Virus Removal</label>
-                                </div>
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="update_software" name="tasks[]"
-                                        value="Software Update">
-                                    <label class="form-check-label" for="update_software">Software Update</label>
-                                </div>
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="system_optimization"
-                                        name="tasks[]" value="System Optimization">
-                                    <label class="form-check-label" for="system_optimization">System Optimization</label>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="images">Upload Images (multiple allowed):</label>
-                                <input type="file" class="form-control-file" id="images" name="images[]" multiple>
-                            </div>
-                            <div class="form-group">
-                                <label for="date_time">Date and Time:</label>
-                                <input type="datetime-local" class="form-control" id="date_time" name="date_time"
-                                    required>
-                            </div>
-
-
-                        </div>
-                        <!-- /.card-body -->
-
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                    <form action="{{ route('admin.fixer.store') }}" method="POST">
-                        @csrf
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Issue</label>
-                                <input type="text" class="form-control" value="{{ old('name') }}"
-                                    id="exampleInputEmail1" placeholder="Please provide a description of your issue"
-                                    name="name">
-                                @error('name')
-                                    <p>{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Operating System</label>
-                                <input type="text" class="form-control" value="{{ old('name') }}"
-                                    id="exampleInputEmail1"
-                                    placeholder="Please provide your operating system and its version" name="name">
-                                @error('name')
-                                    <p>{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label>Tasks to Perform:</label><br>
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="virus_removal" name="tasks[]"
-                                        value="Virus Removal">
-                                    <label class="form-check-label" for="virus_removal">Virus Removal</label>
-                                </div>
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="update_software" name="tasks[]"
-                                        value="Software Update">
-                                    <label class="form-check-label" for="update_software">Software Update</label>
-                                </div>
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="system_optimization"
-                                        name="tasks[]" value="System Optimization">
-                                    <label class="form-check-label" for="system_optimization">System Optimization</label>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="images">Upload Images (multiple allowed):</label>
-                                <input type="file" class="form-control-file" id="images" name="images[]" multiple>
-                            </div>
-                            <div class="form-group">
-                                <label for="date_time">Date and Time:</label>
-                                <input type="datetime-local" class="form-control" id="date_time" name="date_time"
-                                    required>
-                            </div>
-
-
-                        </div>
-                        <!-- /.card-body -->
-
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-
-        </div><!-- ======= Portfolio Section ======= -->
-        <section id="portfolio" class="portfolio">
+        <!-- ======= Portfolio Section ======= -->
+        {{-- <section id="portfolio" class="portfolio">
             <div class="container">
 
                 <div class="section-title" data-aos="fade-in" data-aos-delay="100">
@@ -786,7 +1120,7 @@
                 </div>
 
             </div>
-        </section><!-- End Team Section -->
+        </section><!-- End Team Section --> --}}
 
         <!-- ======= Contact Section ======= -->
         <section id="contact" class="contact section-bg">
@@ -953,6 +1287,6 @@
 
     <a href="{{ url('#') }}" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
-            
+
 
 @endsection

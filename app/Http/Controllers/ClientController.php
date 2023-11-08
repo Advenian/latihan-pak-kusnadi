@@ -46,7 +46,7 @@ class ClientController extends Controller
             ]
 
         );
-     
+
         Client::create(
             [
                 'user_id' => $user->id,
@@ -56,7 +56,6 @@ class ClientController extends Controller
         );
 
         return redirect(route('admin.client.index'));
-    
     }
 
     /**
@@ -72,6 +71,7 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
+        // return $client;
         return view('admin.client-edit', compact('client'));
     }
 
@@ -81,19 +81,18 @@ class ClientController extends Controller
     public function update(Request $request, Client $client)
     {
         $data = $request->validate([
-            'name' => [ 'string', 'max:255'],
-            'email' => [ 'email', Rule::unique('users', 'email')->ignore($client->user_id), 'max:255'],
-            'password' => [ 'nullable','string','min:8'],
-            'phone' => [ 'numeric', 'digits_between:8,12'],
+            'name' => ['string', 'max:255'],
+            'email' => ['email', Rule::unique('users', 'email')->ignore($client->user_id), 'max:255'],
+            'password' => ['nullable', 'string', 'min:8'],
+            'phone' => ['numeric', 'digits_between:8,12'],
         ]);
 
         if (!empty($data['password'])) {
             $data['password'] = bcrypt($data['password']);
-        }
-        else {
+        } else {
             unset($data['password']);
         }
-     
+
         $client->update([
             'phone' => $data['phone'],
         ]);
@@ -110,7 +109,7 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
-        
+
         $client->user()->delete();
         return redirect()->route('admin.client.index')->with('Success', 'data has been successfully deleted!');
     }

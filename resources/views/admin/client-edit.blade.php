@@ -12,16 +12,16 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Name</label>
-                    <input type="text" class="form-control" value="{{ old('name', $client->user->name) }}" id="exampleInputEmail1"
-                        placeholder="Enter name" name="name">
+                    <input type="text" class="form-control" value="{{ old('name', $client->user->name) }}"
+                        id="exampleInputEmail1" placeholder="Enter name" name="name">
                     @error('name')
                         <p>{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" value="{{ old('email', $client->user->email) }}" id="exampleInputEmail1"
-                        placeholder="Enter email" name="email">
+                    <input type="email" class="form-control" value="{{ old('email', $client->user->email) }}"
+                        id="exampleInputEmail1" placeholder="Enter email" name="email">
                     @error('email')
                         <p>{{ $message }}</p>
                     @enderror
@@ -33,11 +33,11 @@
                     @error('password')
                         <p>{{ $message }}</p>
                     @enderror
-                </div>  
+                </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Phone</label>
-                    <input type="number" class="form-control" value="{{ old('phone', $client->phone) }}" id="exampleInputEmail1"
-                        placeholder="Enter Phone" name="phone">
+                    <input type="number" class="form-control" value="{{ old('phone', $client->phone) }}"
+                        id="exampleInputEmail1" placeholder="Enter Phone" name="phone">
                     @error('phone')
                         <p>{{ $message }}</p>
                     @enderror
